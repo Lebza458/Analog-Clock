@@ -5,8 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Analog Clock</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css">
 </head>
 <body>
-    
+    <div class="clock">
+        <div class="hours hand" id="hours"></div>
+        <div class="minutes hand" id="minutes"></div>
+        <div class="seconds hand" id="seconds"></div>
+    </div>
+    <script>
+        var hours = document.getElementById("hours");
+        var minutes = document.getElementById("minutes");
+        var seconds = document.getElementById("seconds");
+
+        var set_clock = setInterval(function clock(){
+            var date_now = new Date();
+            var hr = date_now.getHours();
+            var min = date_now.getMinutes();
+            var sec = date_now.getSeconds();
+
+            var calc_hr = (hr * 30) + (min / 2);
+            var calc_min = (min * 6) + (sec / 10);
+            var calc_sec = sec*6;
+
+            hours.style.transform = 'rotate(' + calc_hr + "deg)";
+            minutes.style.transform = 'rotate(' + calc_min + "deg)"
+            seconds.style.transform = 'rotate(' + calc_sec + "deg)"
+        }, 1000)
+    </script>
 </body>
 </html>
